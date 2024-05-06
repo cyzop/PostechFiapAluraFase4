@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PosTech.Consultorio.Adapters\PosTech.Consultorio.Adapters.csproj" />
+    <ProjectReference Include="..\PosTech.Consultorio.DAO\PosTech.Consultorio.DAO.csproj" />
+    <ProjectReference Include="..\PosTech.Consultorio.Gateways\PosTech.Consultorio.Gateways.csproj" />
+    <ProjectReference Include="..\PosTech.Consultorio.Interfaces\PosTech.Consultorio.Interfaces.csproj" />
+    <ProjectReference Include="..\PosTech.Consultorio.UseCases\PosTech.Consultorio.UseCases.csproj" />
+  </ItemGroup>
+
+</Project>
