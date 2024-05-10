@@ -8,12 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.14" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PosTech.Consultorio.Controllers\PosTech.Consultorio.Controllers.csproj" />
     <ProjectReference Include="..\PosTech.Consultorio.DAO\PosTech.Consultorio.DAO.csproj" />
+    <ProjectReference Include="..\PosTech.Consultorio.Resource.NoSql\PosTech.Consultorio.Resource.NoSql.csproj" />
   </ItemGroup>
 
 </Project>

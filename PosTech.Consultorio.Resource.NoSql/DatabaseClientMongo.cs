@@ -15,13 +15,14 @@ namespace PosTech.Consultorio.Resource.NoSql
         public DatabaseClientMongo(IConfiguration configuration)
         {
             _settings = new MongoDbSettings(configuration);
+            //_settings = new MongoDbSettings();
 
-            string connectionString = string.Format(_settings.GetConnectionString(), _settings.GetSecret());
+            string connectionString = string.Format(_settings.ConnectionString, _settings.Secret);
 
             var mongoClient =new MongoClient(connectionString);
-            var mongoDataBase = mongoClient.GetDatabase(_settings.GetDatabaseName());
+            var mongoDataBase = mongoClient.GetDatabase(_settings.Database);
 
-            _database = mongoDataBase.GetCollection<PacienteModel>(_settings.GetRepositoryName());
+            _database = mongoDataBase.GetCollection<PacienteModel>(_settings.Repository);
         }
 
         public void AtualizarPaciente(PacienteEntity paciente)

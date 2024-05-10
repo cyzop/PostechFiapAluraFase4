@@ -7,7 +7,7 @@ using PosTech.Consultorio.UseCases;
 
 namespace PosTech.Consultorio.Controllers
 {
-    public class PacienteController
+    public class PacienteController : IPacienteController
     {
         private readonly IPacienteGateway pacienteGateway;
 

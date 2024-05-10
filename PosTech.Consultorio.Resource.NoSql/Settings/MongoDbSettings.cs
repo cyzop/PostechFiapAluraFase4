@@ -4,19 +4,20 @@ namespace PosTech.Consultorio.Resource.NoSql.Settings
 {
     public class MongoDbSettings
     {
-        private string ConnectionString { get; set; }
-        private string Database { get; set; }
-        private string Repository { get; set; }
-        private string Secret { get; set; }
+        public string ConnectionString { get; set; }
+        public string Database { get; set; }
+        public string Repository { get; set; }
+        public string Secret { get; set; }
 
         public MongoDbSettings(IConfiguration config)
         {
-            config.GetSection("MongoDbSettings").Bind(this);
+            var sessao = config.GetSection("MongoDbSettings");
+            sessao.Bind(this);
         }
 
-        public string GetConnectionString() { return ConnectionString; }
-        public string GetDatabaseName() { return Database; }
-        public string GetRepositoryName() { return Repository; }
-        public string GetSecret() { return Secret; }    
+        //public string GetConnectionString() { return ConnectionString; }
+        //public string GetDatabaseName() { return Database; }
+        //public string GetRepositoryName() { return Repository; }
+        //public string GetSecret() { return Secret; }    
     }
 }

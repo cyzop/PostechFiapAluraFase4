@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PosTech.Consultorio.DAO\PosTech.Consultorio.DAO.csproj" />
     <ProjectReference Include="..\PosTech.Consultorio.Entities\PosTech.Consultorio.Entities.csproj" />
   </ItemGroup>
 
