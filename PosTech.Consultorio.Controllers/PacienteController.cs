@@ -2,8 +2,10 @@
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Gateways;
-using PosTech.Consultorio.Interfaces;
-using PosTech.Consultorio.UseCases;
+using PosTech.Consultorio.Interfaces.Controller;
+using PosTech.Consultorio.Interfaces.Gateways;
+using PosTech.Consultorio.Interfaces.Repositories;
+using PosTech.Consultorio.UseCases.Paciente;
 
 namespace PosTech.Consultorio.Controllers
 {
@@ -11,7 +13,7 @@ namespace PosTech.Consultorio.Controllers
     {
         private readonly IPacienteGateway pacienteGateway;
 
-        public PacienteController(IDatabaseClient databaseClient)
+        public PacienteController(IPacienteRepository databaseClient)
         {
             this.pacienteGateway = new PacienteGateway(databaseClient);
         }
@@ -28,11 +30,15 @@ namespace PosTech.Consultorio.Controllers
 
             var registroPaciente = new RegistrarPacienteUseCase(pacienteEntity, pacienteBase);
             //RN verifica se ainda não existe
-            registroPaciente.VerificaNovoPaciente();
-            
-            pacienteGateway.RegistrarPaciente(pacienteEntity);
+            registroPaciente.VerificarNovo();
 
-            return PacienteAdapter.ToJson(pacienteDAO);
+            //RN formatar nome            
+            var pacienteFormatter = new FormataNomePacienteUseCase(pacienteEntity);
+            var pacienteFormatado = pacienteFormatter.Formatar();
+            
+            pacienteGateway.RegistrarPaciente(pacienteFormatado);
+
+            return PacienteAdapter.FromEntityToJson(pacienteFormatado);
         }
         
         public string AtualizarPaciente(PacienteDao pacienteDAO)
@@ -46,11 +52,15 @@ namespace PosTech.Consultorio.Controllers
                             pacienteDAO.Email);
 
             var atualizacaoPaciente = new AtualizarPacienteUseCase(pacienteEntity, pacienteBase);
-            atualizacaoPaciente.VerificaNovoPaciente();
+            atualizacaoPaciente.VerificarNovo();
 
-            pacienteGateway.AtualizarPaciente(pacienteEntity);
+            //RN formatar nome
+            var pacienteFormatter = new FormataNomePacienteUseCase(pacienteEntity);
+            var pacienteFormatado = pacienteFormatter.Formatar();
 
-            return PacienteAdapter.ToJson(pacienteDAO);
+            pacienteGateway.AtualizarPaciente(pacienteFormatado);
+
+            return PacienteAdapter.FromEntityToJson(pacienteFormatado);
         }
 
         public IEnumerable<PacienteDao> ListarPacientes()
@@ -72,7 +82,7 @@ namespace PosTech.Consultorio.Controllers
 
             var remocaoPaciente = new RemoverPacienteUseCase(pacienteRemover, identificacao);
             //RN verifica se existe
-            remocaoPaciente.VerificaPaciente();
+            remocaoPaciente.VerificarPacienteExistente();
 
             pacienteGateway.RemoverPaciente(pacienteRemover);
         }

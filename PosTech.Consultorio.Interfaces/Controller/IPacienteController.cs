@@ -1,6 +1,6 @@
 ﻿using PosTech.Consultorio.DAO;
 
-namespace PosTech.Consultorio.Interfaces
+namespace PosTech.Consultorio.Interfaces.Controller
 {
     public interface IPacienteController
     {
@@ -8,6 +8,6 @@ namespace PosTech.Consultorio.Interfaces
         string AtualizarPaciente(PacienteDao pacienteDAO);
         IEnumerable<PacienteDao> ListarPacientes();
         void RemoverPaciente(string identificacao);
-       
+
     }
 }

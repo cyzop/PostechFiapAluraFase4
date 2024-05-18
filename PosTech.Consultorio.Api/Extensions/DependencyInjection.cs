@@ -1,7 +1,6 @@
-﻿using PosTech.Consultorio.Controllers;
-using PosTech.Consultorio.Gateways;
-using PosTech.Consultorio.Interfaces;
-using PosTech.Consultorio.Resource.NoSql;
+﻿using PosTech.Consultorio.Controllers.Extensions;
+using PosTech.Consultorio.Gateways.Extensions;
+using PosTech.Consultorio.Resource.NoSql.Extensions;
 using PosTech.Consultorio.Resource.NoSql.Settings;
 
 namespace PosTech.Consultorio.Api.Extensions
@@ -12,13 +11,12 @@ namespace PosTech.Consultorio.Api.Extensions
         {
             services.AddOptions();
 
-            var repositorySettings = new MongoDbSettings(configuration);
+            services.AddRepositories(configuration);
 
-            services.AddScoped<IDatabaseClient, DatabaseClientMongo>();
-            services.AddScoped<IPacienteGateway, PacienteGateway>();
-            services.AddScoped<PacienteController>();
+            services.AddGateways(configuration);
 
-
+            services.AddCleanArchitectureControllers(configuration);
+            
             return services;
         }
 

@@ -1,6 +1,6 @@
 ﻿using PosTech.Consultorio.Entities;
 
-namespace PosTech.Consultorio.Interfaces
+namespace PosTech.Consultorio.Interfaces.Gateways
 {
     public interface IPacienteGateway
     {

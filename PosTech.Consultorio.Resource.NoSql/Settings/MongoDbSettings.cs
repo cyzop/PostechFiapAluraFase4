@@ -8,16 +8,5 @@ namespace PosTech.Consultorio.Resource.NoSql.Settings
         public string Database { get; set; }
         public string Repository { get; set; }
         public string Secret { get; set; }
-
-        public MongoDbSettings(IConfiguration config)
-        {
-            var sessao = config.GetSection("MongoDbSettings");
-            sessao.Bind(this);
-        }
-
-        //public string GetConnectionString() { return ConnectionString; }
-        //public string GetDatabaseName() { return Database; }
-        //public string GetRepositoryName() { return Repository; }
-        //public string GetSecret() { return Secret; }    
     }
 }

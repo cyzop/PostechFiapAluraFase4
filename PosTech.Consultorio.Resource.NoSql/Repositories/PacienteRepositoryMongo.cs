@@ -1,25 +1,24 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using PosTech.Consultorio.Entities;
-using PosTech.Consultorio.Interfaces;
+using PosTech.Consultorio.Interfaces.Repositories;
 using PosTech.Consultorio.Resource.NoSql.Model;
 using PosTech.Consultorio.Resource.NoSql.Settings;
 
-namespace PosTech.Consultorio.Resource.NoSql
+namespace PosTech.Consultorio.Resource.NoSql.Repositories
 {
-    public class DatabaseClientMongo : IDatabaseClient
+    public class PacienteRepositoryMongo : IPacienteRepository
     {
         private readonly IMongoCollection<PacienteModel> _database;
-        private readonly MongoDbSettings _settings;
+        private readonly PacienteDbSettings _settings;
 
-        public DatabaseClientMongo(IConfiguration configuration)
+        public PacienteRepositoryMongo(IConfiguration configuration)
         {
-            _settings = new MongoDbSettings(configuration);
-            //_settings = new MongoDbSettings();
+            _settings = new PacienteDbSettings(configuration);
 
             string connectionString = string.Format(_settings.ConnectionString, _settings.Secret);
 
-            var mongoClient =new MongoClient(connectionString);
+            var mongoClient = new MongoClient(connectionString);
             var mongoDataBase = mongoClient.GetDatabase(_settings.Database);
 
             _database = mongoDataBase.GetCollection<PacienteModel>(_settings.Repository);
@@ -31,9 +30,9 @@ namespace PosTech.Consultorio.Resource.NoSql
             var pacientedb = _database.Find(filter).FirstOrDefault();
 
             var pacienteAtualizar = new PacienteModel(pacientedb.Id,
-                paciente.Identificacao, 
-                paciente.Nome, 
-                paciente.DataNascimento, 
+                paciente.Identificacao,
+                paciente.Nome,
+                paciente.DataNascimento,
                 paciente.Email);
 
             _database.ReplaceOne(p => p.Id == pacientedb.Id, pacienteAtualizar);
@@ -50,7 +49,7 @@ namespace PosTech.Consultorio.Resource.NoSql
             var filter = Builders<PacienteModel>.Filter.Eq(p => p.Identificacao, identificacao);
             var p = _database.Find(filter).FirstOrDefault();
 
-            return new PacienteEntity(p.Identificacao, p.Nome, p.DataNascimento, p.Email);
+            return p != null ? new PacienteEntity(p.Identificacao, p.Nome, p.DataNascimento, p.Email) : null;
         }
 
         public ICollection<PacienteEntity> ObterPacientes()

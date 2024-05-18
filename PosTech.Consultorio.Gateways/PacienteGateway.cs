@@ -1,13 +1,14 @@
 ﻿using PosTech.Consultorio.Entities;
-using PosTech.Consultorio.Interfaces;
+using PosTech.Consultorio.Interfaces.Gateways;
+using PosTech.Consultorio.Interfaces.Repositories;
 
 namespace PosTech.Consultorio.Gateways
 {
     public class PacienteGateway : IPacienteGateway
     {
-        readonly IDatabaseClient database;
+        readonly IPacienteRepository database;
 
-        public PacienteGateway(IDatabaseClient database)
+        public PacienteGateway(IPacienteRepository database)
         {
             this.database = database;
         }

@@ -5,7 +5,11 @@ namespace PosTech.Consultorio.Resource.NoSql.Model
 {
     public class PacienteModel : IdentityModel
     {
-        public string Identificacao { get; private set; }
+        public string Identificacao 
+        { 
+            get;
+            private set; 
+        }
 
         public string Nome
         {

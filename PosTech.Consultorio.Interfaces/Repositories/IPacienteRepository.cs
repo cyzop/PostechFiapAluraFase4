@@ -1,8 +1,8 @@
 ﻿using PosTech.Consultorio.Entities;
 
-namespace PosTech.Consultorio.Interfaces
+namespace PosTech.Consultorio.Interfaces.Repositories
 {
-    public interface IDatabaseClient
+    public interface IPacienteRepository
     {
         void IncluirPaciente(PacienteEntity paciente);
         PacienteEntity? ObterPacientePorIdentificacao(string identificacao);
