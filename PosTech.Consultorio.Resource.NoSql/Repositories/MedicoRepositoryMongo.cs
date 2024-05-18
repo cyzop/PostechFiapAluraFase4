@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Interfaces.Repositories;
+using PosTech.Consultorio.Resource.NoSql.Adapter;
 using PosTech.Consultorio.Resource.NoSql.Model;
 using PosTech.Consultorio.Resource.NoSql.Settings;
 
@@ -28,33 +29,20 @@ namespace PosTech.Consultorio.Resource.NoSql.Repositories
             var filter = Builders<MedicoModel>.Filter.Eq(p => p.Identificacao, medico.CRM.ToString());
             var medicodb = _database.Find(filter).FirstOrDefault();
 
-            var medicoAtualizar = new MedicoModel(medicodb.Id,
-                medico.CRM.ToString(),
-                medico.DataEmissao,
-                medico.Nome,
-                medico.DataNascimento,
-                medico.Especialidade
-                );
-
+            var medicoAtualizar = MedicoModelAdapter.ModelFromEntity(medicodb.Id, medico);
             _database.ReplaceOne(p => p.Id == medicodb.Id, medicoAtualizar);
         }
 
         public void IncluirMedico(MedicoEntity medico)
         {
-            var medicoIncluir = new MedicoModel(medico.CRM.ToString(), medico.DataEmissao, medico.Nome, medico.DataNascimento, medico.Especialidade);
+            var medicoIncluir = MedicoModelAdapter.ModelFromEntity(medico);
             _database.InsertOne(medicoIncluir);
         }
 
         public ICollection<MedicoEntity> ObterMedicos()
         {
             var dbitens = _database.Find(a => true).ToList();
-
-            return dbitens.Select(e =>
-                new MedicoEntity(e.Nome, 
-                e.DataNascimento, 
-                new CRMEntity(e.Identificacao), 
-                e.DataEmissao, 
-                e.Especialidade)).ToList();
+            return dbitens.Select(e => MedicoModelAdapter.EntityFromModel(e)).ToList();
         }
 
         public MedicoEntity ObterPorIdentificacao(string identificacao)
@@ -62,11 +50,7 @@ namespace PosTech.Consultorio.Resource.NoSql.Repositories
             var filter = Builders<MedicoModel>.Filter.Eq(p => p.Identificacao, identificacao);
             var p = _database.Find(filter).FirstOrDefault();
 
-            return p != null ? new MedicoEntity(p.Nome, 
-                p.DataNascimento, 
-                new CRMEntity(p.Identificacao), 
-                p.DataEmissao, 
-                p.Especialidade) : null;
+            return p != null ? MedicoModelAdapter.EntityFromModel(p) : null;
         }
 
         public void RemoverMedico(MedicoEntity medico)

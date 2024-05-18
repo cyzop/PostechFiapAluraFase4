@@ -9,6 +9,7 @@ namespace PosTech.Consultorio.Adapters
         {
             var atendimentoData = new AtendimentoMedicoAdapterData
             {
+
                 Anamnese = atendimento.Anamnese,
                 DataAtendimento = atendimento.DataAtendimento,
                 Diagnostico = atendimento.Diagnostico,

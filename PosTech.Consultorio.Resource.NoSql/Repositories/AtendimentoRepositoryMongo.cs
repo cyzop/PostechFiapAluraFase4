@@ -2,9 +2,9 @@
 using MongoDB.Driver;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Interfaces.Repositories;
+using PosTech.Consultorio.Resource.NoSql.Adapter;
 using PosTech.Consultorio.Resource.NoSql.Model;
 using PosTech.Consultorio.Resource.NoSql.Settings;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PosTech.Consultorio.Resource.NoSql.Repositories
 {
@@ -30,71 +30,47 @@ namespace PosTech.Consultorio.Resource.NoSql.Repositories
             var filter = Builders<AtendimentoModel>.Filter.Eq(p => p.Id, atendimento.Id);
             var registrodb = _database.Find(filter).FirstOrDefault();
 
-            var registroAtualizar = new AtendimentoModel(registrodb.Id,
-                new MedicoAtendimentoModel(atendimento.Medico.CRM, atendimento.Medico.Nome),
-                new PacienteAtendimentoModel(atendimento.Paciente.Identificacao, atendimento.Paciente.Nome),
-                atendimento.DataAtendimento,
-                atendimento.Anamnese,
-                atendimento.Sintoma,
-                atendimento.Diagnostico,
-                atendimento.Tratamento);
+            var registroAtualizar = AtendimentoMedicoModelAdapter.ModelFromEntity(registrodb.Id, atendimento);
 
             _database.ReplaceOne(p => p.Id == registrodb.Id, registroAtualizar);
         }
 
         public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorData(DateTime data)
         {
-            var filter = Builders<AtendimentoModel>.Filter.Eq(p => p.DataAtendimento, data);
-            var dbitens = _database.Find(filter).ToList();
+            var dbitens = _database.Find(f=> f.DataAtendimento.Year == data.Year &&
+                                            f.DataAtendimento.Month == data.Month &&
+                                            f.DataAtendimento.Day == data.Day).ToList();
 
-            return dbitens.Select(e =>
-             new AtendimentoMedicoEntity(e.Id, e.DataAtendimento, e.Anamnese, e.Sintoma, e.Diagnostico, e.Tratamento,
-                new IdentificadorMedicoEntity(e.Medico.Nome, e.Medico.Identificacao),
-                new IdentificadorPacienteEntity(e.Paciente.Nome, e.Paciente.Identificacao))).ToList();
+            return dbitens.Select(e => AtendimentoMedicoModelAdapter.EntityFromModel(e)).ToList();
         }
 
-        public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorIdentificadorMedico(string idMedico)
+        public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorMedico(string idMedico)
         {
             var filter = Builders<AtendimentoModel>.Filter.Eq(p => p.Medico.Identificacao, idMedico);
             var dbitens = _database.Find(filter).ToList();
 
-            return dbitens.Select(e =>
-             new AtendimentoMedicoEntity(e.Id, e.DataAtendimento, e.Anamnese, e.Sintoma, e.Diagnostico, e.Tratamento,
-                new IdentificadorMedicoEntity(e.Medico.Nome, e.Medico.Identificacao),
-                new IdentificadorPacienteEntity(e.Paciente.Nome, e.Paciente.Identificacao))).ToList();
+            return dbitens.Select(e => AtendimentoMedicoModelAdapter.EntityFromModel(e)).ToList();
         }
 
-        public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorIdentificadorPaciente(string idPaciente)
+        public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorPaciente(string idPaciente)
         {
             var filter = Builders<AtendimentoModel>.Filter.Eq(p => p.Paciente.Identificacao, idPaciente);
             var dbitens = _database.Find(filter).ToList();
 
-            return dbitens.Select(e =>
-             new AtendimentoMedicoEntity(e.Id, e.DataAtendimento, e.Anamnese, e.Sintoma, e.Diagnostico, e.Tratamento,
-                new IdentificadorMedicoEntity(e.Medico.Nome, e.Medico.Identificacao),
-                new IdentificadorPacienteEntity(e.Paciente.Nome, e.Paciente.Identificacao))).ToList();
+            return dbitens.Select(e => AtendimentoMedicoModelAdapter.EntityFromModel(e)).ToList();
         }
 
-        public AtendimentoMedicoEntity ObterAtendimentoPorIdentificacao(string identificacao)
+        public AtendimentoMedicoEntity ObterPorIdentificacao(string identificacao)
         {
             var filter = Builders<AtendimentoModel>.Filter.Eq(p => p.Id, identificacao);
             var e = _database.Find(filter).FirstOrDefault();
 
-            return e != null ? new AtendimentoMedicoEntity(e.Id, e.DataAtendimento, e.Anamnese, e.Sintoma, e.Diagnostico, e.Tratamento,
-                new IdentificadorMedicoEntity(e.Medico.Nome, e.Medico.Identificacao),
-                new IdentificadorPacienteEntity(e.Paciente.Nome, e.Paciente.Identificacao)) : null;
+            return e != null ? AtendimentoMedicoModelAdapter.EntityFromModel(e) : null;
         }
 
         public void RegistrarAtendimentoMedico(AtendimentoMedicoEntity atendimento)
         {
-            var atendimentoIncluir = new AtendimentoModel(
-                new MedicoAtendimentoModel(atendimento.Medico.CRM, atendimento.Medico.Nome),
-                new PacienteAtendimentoModel(atendimento.Paciente.Identificacao, atendimento.Paciente.Nome),
-                atendimento.DataAtendimento,
-                atendimento.Anamnese,
-                atendimento.Sintoma,
-                atendimento.Diagnostico,
-                atendimento.Tratamento);
+            var atendimentoIncluir = AtendimentoMedicoModelAdapter.ModelFromEntity(atendimento);
 
             _database.InsertOne(atendimentoIncluir);
         }

@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PosTech.Consultorio.Adapters\PosTech.Consultorio.Adapters.csproj" />
     <ProjectReference Include="..\PosTech.Consultorio.Interfaces\PosTech.Consultorio.Interfaces.csproj" />
   </ItemGroup>
 

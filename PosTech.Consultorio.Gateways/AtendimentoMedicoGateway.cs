@@ -25,17 +25,17 @@ namespace PosTech.Consultorio.Gateways
 
         public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorMedico(string IdMedico)
         {
-            return this.database.ObterAtendimentosPorIdentificadorMedico(IdMedico);
+            return this.database.ObterAtendimentosPorMedico(IdMedico);
         }
 
         public ICollection<AtendimentoMedicoEntity> ObterAtendimentosPorPaciente(string IdPaciente)
         {
-            return this.database.ObterAtendimentosPorIdentificadorPaciente(IdPaciente);
+            return this.database.ObterAtendimentosPorPaciente(IdPaciente);
         }
 
         public AtendimentoMedicoEntity ObterPorIdentificacao(string identificacao)
         {
-            return this.database.ObterAtendimentoPorIdentificacao(identificacao);
+            return this.database.ObterPorIdentificacao(identificacao);
         }
 
         public void RegistrarAtendimentoMedico(AtendimentoMedicoEntity atendimento)

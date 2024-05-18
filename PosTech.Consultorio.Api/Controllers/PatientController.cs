@@ -159,11 +159,5 @@ namespace PosTech.Consultorio.Api.Controllers
                 return BadRequest(ex);
             }
         }
-
-        [HttpGet("teste")]
-        public async Task<IActionResult> GetTeste()
-        {
-            return Ok("por dentro da paciente controller");
-        }
     }
 }

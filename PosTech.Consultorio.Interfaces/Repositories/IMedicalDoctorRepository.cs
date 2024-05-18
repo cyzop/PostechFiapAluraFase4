@@ -1,13 +1,8 @@
-﻿using PosTech.Consultorio.Entities;
+﻿using PosTech.Consultorio.Interfaces.Gateways;
 
 namespace PosTech.Consultorio.Interfaces.Repositories
 {
-    public interface IMedicalDoctorRepository
+    public interface IMedicalDoctorRepository : IMedicoGateway
     {
-        void AtualizarMedico(MedicoEntity medico);
-        void IncluirMedico(MedicoEntity medico);
-        ICollection<MedicoEntity> ObterMedicos();
-        MedicoEntity ObterPorIdentificacao(string identificacao);
-        void RemoverMedico(MedicoEntity medico);
     }
 }

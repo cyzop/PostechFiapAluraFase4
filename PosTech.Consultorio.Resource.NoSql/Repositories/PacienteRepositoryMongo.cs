@@ -2,6 +2,7 @@
 using MongoDB.Driver;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Interfaces.Repositories;
+using PosTech.Consultorio.Resource.NoSql.Adapter;
 using PosTech.Consultorio.Resource.NoSql.Model;
 using PosTech.Consultorio.Resource.NoSql.Settings;
 
@@ -29,41 +30,32 @@ namespace PosTech.Consultorio.Resource.NoSql.Repositories
             var filter = Builders<PacienteModel>.Filter.Eq(p => p.Identificacao, paciente.Identificacao);
             var pacientedb = _database.Find(filter).FirstOrDefault();
 
-            var pacienteAtualizar = new PacienteModel(pacientedb.Id,
-                paciente.Identificacao,
-                paciente.Nome,
-                paciente.DataNascimento,
-                paciente.Email);
+            var pacienteAtualizar = PacienteModelAdapter.ModelFromEntity(pacientedb.Id, paciente);
 
             _database.ReplaceOne(p => p.Id == pacientedb.Id, pacienteAtualizar);
         }
 
-        public void IncluirPaciente(PacienteEntity paciente)
+        public void RegistrarPaciente(PacienteEntity paciente)
         {
-            var pacienteIncluir = new PacienteModel(paciente.Identificacao, paciente.Nome, paciente.DataNascimento, paciente.Email);
+            var pacienteIncluir = PacienteModelAdapter.ModelFromEntity(paciente);
             _database.InsertOne(pacienteIncluir);
         }
 
-        public PacienteEntity? ObterPacientePorIdentificacao(string identificacao)
+        public PacienteEntity ObterPorIdentificacao(string identificacao)
         {
             var filter = Builders<PacienteModel>.Filter.Eq(p => p.Identificacao, identificacao);
             var p = _database.Find(filter).FirstOrDefault();
 
-            return p != null ? new PacienteEntity(p.Identificacao, p.Nome, p.DataNascimento, p.Email) : null;
+            return p != null ? PacienteModelAdapter.EntityFromModel(p)  : null;
         }
 
         public ICollection<PacienteEntity> ObterPacientes()
         {
             var dbitens = _database.Find(a => true).ToList();
 
-            return dbitens.Select(e =>
-                new PacienteEntity(
-                e.Identificacao,
-                e.Nome,
-                e.DataNascimento,
-                e.Email)).ToList();
+            return dbitens.Select(e => PacienteModelAdapter.EntityFromModel(e)).ToList();
         }
-
+      
         public void RemoverPaciente(PacienteEntity paciente)
         {
             var filter = Builders<PacienteModel>.Filter.Eq(p => p.Identificacao, paciente.Identificacao);

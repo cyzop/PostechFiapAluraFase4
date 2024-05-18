@@ -15,7 +15,7 @@ namespace PosTech.Consultorio.Gateways
 
         public void RegistrarPaciente(PacienteEntity paciente)
         {
-            database.IncluirPaciente(paciente);
+            database.RegistrarPaciente(paciente);
         }
 
         public void AtualizarPaciente(PacienteEntity paciente)
@@ -25,7 +25,7 @@ namespace PosTech.Consultorio.Gateways
 
         public PacienteEntity ObterPorIdentificacao(string identificacao)
         {
-            return database.ObterPacientePorIdentificacao(identificacao);
+            return database.ObterPorIdentificacao(identificacao);
         }
 
         public ICollection<PacienteEntity> ObterPacientes()

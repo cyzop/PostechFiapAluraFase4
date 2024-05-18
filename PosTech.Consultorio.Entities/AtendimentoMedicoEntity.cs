@@ -34,7 +34,7 @@
             AssertionConcern.AssertArgumentNotEmpty(Paciente.Identificacao, "A Identificação do paciente não pode estar vazia!");
             AssertionConcern.AssertArgumentNotEmpty(Medico.CRM, "O CRM do médico não pode estar vazio!");
 
-            AssertionConcern.AssertArgumentDate(DataAtendimento, DateTime.Today.AddYears(1), DateTime.Today, "A data de atendimento não pode ser futura!");
+            AssertionConcern.AssertArgumentMaxDate(DataAtendimento, DateTime.Today, "A data de atendimento não pode ser futura!");
         }
     }
 }

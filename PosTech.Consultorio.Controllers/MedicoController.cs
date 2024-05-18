@@ -1,4 +1,5 @@
 ﻿using PosTech.Consultorio.Adapters;
+using PosTech.Consultorio.Adapters.Entity;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Interfaces.Controller;
@@ -19,23 +20,18 @@ namespace PosTech.Consultorio.Controllers
         public string AtualizarMedico(MedicoDAO medico)
         {
             var medicoBase = _medicoGateway.ObterPorIdentificacao(medico.CRM);
-
-            var crmFormatter = new FormatarStringCRMUseCase(medico.CRM);
-            var crmEntity = new CRMEntity(crmFormatter.Formatar());
-
-            var medicoeEntity = new MedicoEntity(
-                            medico.Nome,
-                            medico.DataNascimento,
-                            crmEntity,
-                            medico.DataInscricao,
-                            medico.Especialidade);
+          
+            var medicoeEntity = MedicoEntityAdapter.FromDAO(medico);
 
             var registroAtualizar = new AtualizarMedicoUseCase(medicoeEntity, medicoBase);
             registroAtualizar.VerificaNovo();
 
             //RN formatar nome
             var nomeFormatter = new FormatarNomeMedicoUseCase(medicoeEntity);
-            var medicoFormatado = nomeFormatter.Formatar();
+            var nomeFormatado = nomeFormatter.Formatar();
+
+            var crmFormatter = new FormatarCRMMedicoUseCase(nomeFormatado);
+            var medicoFormatado = crmFormatter.Formatar();
 
             _medicoGateway.AtualizarMedico(medicoFormatado);
 

@@ -1,6 +1,7 @@
 ﻿using PosTech.Consultorio.Adapters;
+using PosTech.Consultorio.Adapters.DAO;
+using PosTech.Consultorio.Adapters.Entity;
 using PosTech.Consultorio.DAO;
-using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Interfaces.Controller;
 using PosTech.Consultorio.Interfaces.Gateways;
 using PosTech.Consultorio.UseCases.AtendimentoMedico;
@@ -25,22 +26,9 @@ namespace PosTech.Consultorio.Controllers
             var medico = _medicoGateway.ObterPorIdentificacao(atendimento.Medico.CRM);
             var paciente = _pacienteGateway.ObterPorIdentificacao(atendimento.Paciente.Identificacao);
 
-            var atendimentoEntity = new AtendimentoMedicoEntity(
-                atendimento.Id,
-                atendimento.DataAtendimento,
-                atendimento.Anamnese,
-                atendimento.Sintoma,
-                atendimento.Diagnostico,
-                atendimento.Diagnostico,
-                new IdentificadorMedicoEntity(
-                    medico?.Nome,
-                    atendimento.Medico.CRM),
-                new IdentificadorPacienteEntity(
-                    paciente?.Nome,
-                    atendimento.Paciente.Identificacao));
+            var atendimentoEntity = AtendimentoMedicoEntityAdapter.FromDAO(atendimento, medico?.Nome, paciente?.Nome);
 
             var registrarAtendimentoMedico = new RegistrarAtendimentoUseCase(atendimentoEntity);
-            //RN verifica se ainda não existe
             registrarAtendimentoMedico.Verificar();
 
             _atendimentoGateway.RegistrarAtendimentoMedico(atendimentoEntity);
@@ -53,22 +41,9 @@ namespace PosTech.Consultorio.Controllers
             var medico = _medicoGateway.ObterPorIdentificacao(atendimento.Medico.CRM);
             var paciente = _pacienteGateway.ObterPorIdentificacao(atendimento.Paciente.Identificacao);
 
-            var atendimentoEntity = new AtendimentoMedicoEntity( 
-                atendimento.Id,
-                atendimento.DataAtendimento,
-                atendimento.Anamnese,
-                atendimento.Sintoma,
-                atendimento.Diagnostico,
-                atendimento.Diagnostico,
-                new IdentificadorMedicoEntity(
-                    medico?.Nome,
-                    atendimento.Medico.CRM),
-                new IdentificadorPacienteEntity(
-                    paciente?.Nome,
-                    atendimento.Paciente.Identificacao));
+            var atendimentoEntity = AtendimentoMedicoEntityAdapter.FromDAO(atendimento, medico?.Nome, paciente?.Nome);
 
             var registrarAtendimentoMedico = new RegistrarAtendimentoUseCase(atendimentoEntity);
-            //RN verifica se ainda não existe
             registrarAtendimentoMedico.Verificar();
 
             _atendimentoGateway.RegistrarAtendimentoMedico(atendimentoEntity);
@@ -81,72 +56,19 @@ namespace PosTech.Consultorio.Controllers
             DateTime data = DateTime.ParseExact(dateFormatyyyyMMdd.ToString(), "yyyyMMdd", new System.Globalization.CultureInfo("pt-BR", true));
             
             var atendimentos = _atendimentoGateway.ObterAtendimentosPorData(data);
-            var atendimentosMedicoDao = atendimentos?.Select(e => new AtendimentoMedicoDAO()
-            {
-                Anamnese = e.Anamnese,
-                DataAtendimento = e.DataAtendimento,                
-                Diagnostico = e.Diagnostico,
-                Sintoma = e.Sintoma,
-                Tratamento = e.Tratamento,
-                Medico = new IdentificadorMedicoDAO()
-                {
-                    CRM = e.Medico.CRM,
-                    Nome = e.Medico.Nome
-                },
-                Paciente = new IdentificadorPacienteDAO() { 
-                    Identificacao = e.Paciente.Identificacao,
-                    Nome = e.Paciente.Nome
-                }
-            });
-            return atendimentosMedicoDao?.ToList();
+            return atendimentos?.Select(e => AtendimentoDaoAdapter.FromEntity(e)).ToList();
         }
 
         public List<AtendimentoMedicoDAO> ListarAtendimentosPorMedico(string medicoId)
         {
             var atendimentos = _atendimentoGateway.ObterAtendimentosPorMedico(medicoId);
-            var atendimentosMedicoDao = atendimentos?.Select(e => new AtendimentoMedicoDAO()
-            {
-                Anamnese = e.Anamnese,
-                DataAtendimento = e.DataAtendimento,
-                Diagnostico = e.Diagnostico,
-                Sintoma = e.Sintoma,
-                Tratamento = e.Tratamento,
-                Medico = new IdentificadorMedicoDAO()
-                {
-                    CRM = e.Medico.CRM,
-                    Nome = e.Medico.Nome
-                },
-                Paciente = new IdentificadorPacienteDAO()
-                {
-                    Identificacao = e.Paciente.Identificacao,
-                    Nome = e.Paciente.Nome
-                }
-            });
-            return atendimentosMedicoDao?.ToList();
+            return atendimentos?.Select(e => AtendimentoDaoAdapter.FromEntity(e)).ToList();
         }
 
         public List<AtendimentoMedicoDAO> ListarAtendimentosPorPaciente(string pacienteId)
         {
             var atendimentos = _atendimentoGateway.ObterAtendimentosPorPaciente(pacienteId);
-            var atendimentosMedicoDao = atendimentos?.Select(e => new AtendimentoMedicoDAO()
-            {
-                Anamnese = e.Anamnese,
-                DataAtendimento = e.DataAtendimento,
-                Diagnostico = e.Diagnostico,
-                Sintoma = e.Sintoma,
-                Tratamento = e.Tratamento,
-                Medico = new IdentificadorMedicoDAO()
-                {
-                    CRM = e.Medico.CRM,
-                    Nome = e.Medico.Nome
-                },
-                Paciente = new IdentificadorPacienteDAO()
-                {
-                    Identificacao = e.Paciente.Identificacao,
-                    Nome = e.Paciente.Nome
-                }
-            });
-            return atendimentosMedicoDao?.ToList();
+            return atendimentos?.Select(e => AtendimentoDaoAdapter.FromEntity(e)).ToList();
         }
     }
 }

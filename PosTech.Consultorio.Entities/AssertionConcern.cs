@@ -25,6 +25,11 @@ namespace PosTech.Consultorio.Entities
             if(dateValue <  minDate || dateValue > maxData) { throw new ArgumentException(message); }
         }
 
+        public static void AssertArgumentMaxDate(DateTime dateValue, DateTime maxData, string message)
+        {
+            if (dateValue > maxData) { throw new ArgumentException(message); }
+        }
+
         public static void AssertArgumentNumber(int number, int minValue, int maxValue, string message) {
             if (number < minValue || number > maxValue ) { throw new ArgumentException(message); }
         }
