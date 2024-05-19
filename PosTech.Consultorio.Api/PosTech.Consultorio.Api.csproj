@@ -20,4 +20,7 @@
     <ProjectReference Include="..\PosTech.Consultorio.Resource.NoSql\PosTech.Consultorio.Resource.NoSql.csproj" />
   </ItemGroup>
 
+        <ItemGroup>
+		<InternalsVisibleTo Include="PosTech.Consultorio.Tests" />
+	</ItemGroup>
 </Project>

@@ -7,7 +7,6 @@ namespace PosTech.Consultorio.Tests.Fixtures
     public class PacienteTestFixture
     {
         private readonly Faker _faker;
-
         public PacienteTestFixture()
         {
             _faker = new Faker();
@@ -56,7 +55,13 @@ namespace PosTech.Consultorio.Tests.Fixtures
 
             return new PacienteEntity(identificador, nome, DateTime.Today.AddDays(2), email);
         }
-
+        public PacienteDao GerarPacienteDao()
+        {
+            var identificador = _faker.Random.Number().ToString();
+            var email = _faker.Person.Email;
+            var nome = _faker.Name.FullName();
+            return GerarPacienteDao(nome, identificador, DateTime.Today.AddYears(-20), email);
+        }
         public PacienteDao GerarPacienteDao(string nome, string identificacao, DateTime dataNascimento, string? email)
         {
             return new PacienteDao()

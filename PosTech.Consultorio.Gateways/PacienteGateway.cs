@@ -6,9 +6,9 @@ namespace PosTech.Consultorio.Gateways
 {
     public class PacienteGateway : IPacienteGateway
     {
-        readonly IPacienteRepository database;
+        readonly IPatientRepository database;
 
-        public PacienteGateway(IPacienteRepository database)
+        public PacienteGateway(IPatientRepository database)
         {
             this.database = database;
         }

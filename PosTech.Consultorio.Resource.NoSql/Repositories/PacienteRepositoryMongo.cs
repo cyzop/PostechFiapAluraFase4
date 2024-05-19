@@ -8,7 +8,7 @@ using PosTech.Consultorio.Resource.NoSql.Settings;
 
 namespace PosTech.Consultorio.Resource.NoSql.Repositories
 {
-    public class PacienteRepositoryMongo : IPacienteRepository
+    public class PacienteRepositoryMongo : IPatientRepository
     {
         private readonly IMongoCollection<PacienteModel> _database;
         private readonly PacienteDbSettings _settings;

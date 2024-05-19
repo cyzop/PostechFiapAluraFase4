@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using PosTech.Consultorio.Controllers;
 using PosTech.Consultorio.DAO;
+using PosTech.Consultorio.Interfaces.Controller;
 using PosTech.Consultorio.Interfaces.Repositories;
 
 namespace PosTech.Consultorio.Api.Controllers
@@ -11,10 +12,10 @@ namespace PosTech.Consultorio.Api.Controllers
     public class MedicalDoctorController : ControllerBase
     {
         private readonly ILogger<MedicalDoctorController> _logger;
-        private readonly MedicoController _medicoController;
+        private readonly IMedicoController _medicoController;
         private readonly IMedicalDoctorRepository medicoStore;
 
-        public MedicalDoctorController(ILogger<MedicalDoctorController> logger, MedicoController medicoController, IMedicalDoctorRepository medicoStore)
+        public MedicalDoctorController(ILogger<MedicalDoctorController> logger, IMedicoController medicoController, IMedicalDoctorRepository medicoStore)
         {
             _logger = logger;
             _medicoController = medicoController;

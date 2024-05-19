@@ -24,14 +24,13 @@
 
             ValidadeEntity();
         }
-
+            
         public void ValidadeEntity()
         {
             AssertionConcern.AssertArgumentNotEmpty(base.Nome, "O Nome do médico não pode estar vazio!");
             AssertionConcern.AssertArgumentNotEmpty(Especialidade, "A especialidade do médico não pode estar vazia!");
-            AssertionConcern.AssertArgumentDate(base.DataNascimento, DateTime.Today.AddYears(-70), DateTime.Today.AddYears(-21), "Data de nascimento do médico inválida, ele não pode ter mais de 70 anos nem ser menor de 21!");
-
-            AssertionConcern.AssertArgumentDate(DataEmissao, base.DataNascimento.AddYears(20), DateTime.Today, "Data de emissão do CRM inválido, o médico precisa ter 20 anos de idade para conseguir tirar seu registro!");
+            AssertionConcern.AssertArgumentMinDate(base.DataNascimento, DateTime.Today.AddYears(-70), "Data de nascimento do médico inválida, ele não pode ter mais de 70 anos!");
+            AssertionConcern.AssertArgumentMaxDate(base.DataNascimento, DateTime.Today.AddYears(-21), "Data de nascimento do médico inválida, ele não pode ser menor de 21 anos!");
         }
     }
 }

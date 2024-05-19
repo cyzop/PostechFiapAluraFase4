@@ -18,7 +18,9 @@
         {
             AssertionConcern.AssertArgumentNotEmpty(Identificacao, "A Identificação do paciente não pode estar vazia!");
             AssertionConcern.AssertArgumentNotEmpty(base.Nome, "O Nome do paciente não pode estar vazio!");
-            AssertionConcern.AssertArgumentDate(base.DataNascimento, DateTime.Today.AddYears(-110), DateTime.Today, "Data de nascimento do paciente inválida!");
+            //AssertionConcern.AssertArgumentDate(base.DataNascimento, DateTime.Today.AddYears(-110), DateTime.Today, "Data de nascimento do paciente inválida!");
+            AssertionConcern.AssertArgumentMinDate(base.DataNascimento, DateTime.Today.AddYears(-110), "Data de nascimento do paciente inválida, ele não pode ter mais de 110 anos!");
+            AssertionConcern.AssertArgumentMaxDate(base.DataNascimento, DateTime.Today, "Data de nascimento do paciente inválida, ele não pode nascer no futuro!");
         }
     }
 }

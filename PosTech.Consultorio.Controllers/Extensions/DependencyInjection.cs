@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PosTech.Consultorio.Interfaces.Controller;
 
 namespace PosTech.Consultorio.Controllers.Extensions
 {
@@ -8,9 +9,9 @@ namespace PosTech.Consultorio.Controllers.Extensions
         public static IServiceCollection AddCleanArchitectureControllers(this IServiceCollection services, IConfiguration configuration)
         {
             //AddControllers
-            services.AddScoped<PacienteController>();
-            services.AddScoped<MedicoController>();
-            services.AddScoped<AtendimentoController>();
+            services.AddScoped<IPacienteController, PacienteController>();
+            services.AddScoped<IMedicoController, MedicoController>();
+            services.AddScoped<IAtendimentoController, AtendimentoController>();
 
             return services;
         }

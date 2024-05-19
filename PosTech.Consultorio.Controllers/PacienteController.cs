@@ -13,7 +13,7 @@ namespace PosTech.Consultorio.Controllers
     {
         private readonly IPacienteGateway pacienteGateway;
 
-        public PacienteController(IPacienteRepository databaseClient)
+        public PacienteController(IPatientRepository databaseClient)
         {
             this.pacienteGateway = new PacienteGateway(databaseClient);
         }

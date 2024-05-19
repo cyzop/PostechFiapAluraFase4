@@ -10,7 +10,7 @@ namespace PosTech.Consultorio.Resource.NoSql.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
             //AddRepositories
-            services.AddSingleton<IPacienteRepository, PacienteRepositoryMongo>();
+            services.AddSingleton<IPatientRepository, PacienteRepositoryMongo>();
             services.AddSingleton<IMedicalDoctorRepository, MedicoRepositoryMongo>();
             services.AddSingleton<IMedicalCareRepository, AtendimentoRepositoryMongo>();
 

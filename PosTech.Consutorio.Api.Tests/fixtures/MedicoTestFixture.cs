@@ -88,7 +88,6 @@ namespace PosTech.Consultorio.Tests.Fixtures
                 especialidade);
         }
 
-
         public MedicoDAO GerarMedicoDao()
         {
             var nome = _faker.Name.FullName();

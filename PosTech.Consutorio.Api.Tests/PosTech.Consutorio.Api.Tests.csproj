@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <PackageReference Include="Bogus" Version="35.5.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1" />
     <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="xunit" Version="2.4.2" />
@@ -26,15 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PosTech.Consultorio.Adapters\PosTech.Consultorio.Adapters.csproj" />
     <ProjectReference Include="..\PosTech.Consultorio.Api\PosTech.Consultorio.Api.csproj" />
-    <ProjectReference Include="..\PosTech.Consultorio.Controllers\PosTech.Consultorio.Controllers.csproj" />
-    <ProjectReference Include="..\PosTech.Consultorio.Entities\PosTech.Consultorio.Entities.csproj" />
-    <ProjectReference Include="..\PosTech.Consultorio.Interfaces\PosTech.Consultorio.Interfaces.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UnitTests\Repositories\" />
   </ItemGroup>
 
 </Project>

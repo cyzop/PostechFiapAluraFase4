@@ -2,7 +2,7 @@
 
 namespace PosTech.Consultorio.Interfaces.Repositories
 {
-    public interface IPacienteRepository : IPacienteGateway
+    public interface IPatientRepository : IPacienteGateway
     {
     }
 }
