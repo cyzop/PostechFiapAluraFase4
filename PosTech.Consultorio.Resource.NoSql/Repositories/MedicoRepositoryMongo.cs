@@ -24,6 +24,11 @@ namespace PosTech.Consultorio.Resource.NoSql.Repositories
 
             _database = mongoDataBase.GetCollection<MedicoModel>(_settings.Repository);
         }
+
+        public MedicoRepositoryMongo(IMongoDatabase database)
+        {
+            _database = database.GetCollection<MedicoModel>(nameof(MedicoModel));
+        }
         public void AtualizarMedico(MedicoEntity medico)
         {
             var filter = Builders<MedicoModel>.Filter.Eq(p => p.Identificacao, medico.CRM.ToString());

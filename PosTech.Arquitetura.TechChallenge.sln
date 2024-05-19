@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Consultorio.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Consutorio.Api.Tests", "PosTech.Consutorio.Api.Tests\PosTech.Consutorio.Api.Tests.csproj", "{5406AC07-E463-48A7-88E9-F4F9676D5BD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosTech.Consultorio.MongoDB.Tests", "PosTech.Consultorio.MongoDB.Tests\PosTech.Consultorio.MongoDB.Tests.csproj", "{D9FDEBF5-A8B0-4E19-8E67-50E929E14ADC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{5406AC07-E463-48A7-88E9-F4F9676D5BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5406AC07-E463-48A7-88E9-F4F9676D5BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5406AC07-E463-48A7-88E9-F4F9676D5BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9FDEBF5-A8B0-4E19-8E67-50E929E14ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9FDEBF5-A8B0-4E19-8E67-50E929E14ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9FDEBF5-A8B0-4E19-8E67-50E929E14ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9FDEBF5-A8B0-4E19-8E67-50E929E14ADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{CBD3AEE1-CB63-4C4A-8F7C-8286ACF8FFA0} = {18FA114B-1BEA-4DC7-8E90-FBFEF7B44EB1}
 		{93D7D3FD-087E-4FC5-A837-656B93D96CE2} = {F098F9FF-C5C5-4E17-A50C-F868419C7A8D}
 		{5406AC07-E463-48A7-88E9-F4F9676D5BD1} = {F098F9FF-C5C5-4E17-A50C-F868419C7A8D}
+		{D9FDEBF5-A8B0-4E19-8E67-50E929E14ADC} = {F098F9FF-C5C5-4E17-A50C-F868419C7A8D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09742E18-27CB-4C5C-9C18-18E60773D2FB}

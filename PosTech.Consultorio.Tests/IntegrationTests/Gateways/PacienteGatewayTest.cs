@@ -18,7 +18,8 @@ namespace PosTech.Consultorio.Tests.IntegrationTests.Gateways
             _medicoRepository = new Mock<IMedicalDoctorRepository>();
         }
 
-        [Fact]
+        [Fact(DisplayName = "Validando busca de paciente por Identificador")]
+        [Trait("PacienteEntity", "Validando busca de paciente por Identificador")]
         public void Get_ReturnsByIdentifier()
         {
             //Arrange

@@ -24,7 +24,10 @@ namespace PosTech.Consultorio.Resource.NoSql.Repositories
 
             _database = mongoDataBase.GetCollection<AtendimentoModel>(_settings.Repository);
         }
-
+        public AtendimentoRepositoryMongo(IMongoDatabase database)
+        {
+            _database = database.GetCollection<AtendimentoModel>(nameof(AtendimentoModel));
+        }
         public void AtualizarAtendimentoMedico(AtendimentoMedicoEntity atendimento)
         {
             var filter = Builders<AtendimentoModel>.Filter.Eq(p => p.Id, atendimento.Id);
