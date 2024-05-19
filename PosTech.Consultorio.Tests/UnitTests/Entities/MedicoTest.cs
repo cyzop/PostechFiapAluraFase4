@@ -6,12 +6,10 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
     [Collection(nameof(MedicoTestFixtureCollection))]
     public class MedicoTest
     {
-        //private readonly Faker _faker;
         public readonly MedicoTestFixture _medicoFixture;
 
         public MedicoTest(MedicoTestFixture medicoFixture)
         {
-          //  _faker = new Faker();
             _medicoFixture = medicoFixture;
         }
 

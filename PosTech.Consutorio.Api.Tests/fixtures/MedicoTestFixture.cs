@@ -107,7 +107,5 @@ namespace PosTech.Consultorio.Tests.Fixtures
                 Especialidade = especialidade
             };
         }
-
-        //declarar a colection para colocar com notation na classe de teste que vai utilizar
     }
 }
