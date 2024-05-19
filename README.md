@@ -94,5 +94,67 @@ Exemplo:
 - Definir o projeto PosTech.Consultorio.Api como projeto para inicialização
 - Iniciar o projeto com Depuração apertando o F5, para executar o projeto utilizando o Swagger
 
+
+## Requisitos do Software
+
+# Cadastro de Médicos
+
+Requisito 1.1 - O sistema deve permitir o cadastro dos médicos que serão utilizado para registrar os atendimentos médicos
+Critérios de aceite: Médico com informações válidas cadastrado no sistema
+
+Requisito 1.2 - Para cadastrar um médico as informações de CRM (Registro no Conselho Regional de Medicina), Nome, Data de Nascimento e Data de Registro (CRM) são obrigatórios
+Critérios de aceite: Médico com informações não preenchidas recusado pelo sistema
+
+Requisito 1.3 - Um médico será considerado apto ao trabalho se tiver com idade entre 20 e 70 anos.
+Critérios de aceite: Médico com idade fora da faixa válida recusado pelo sistema
+
+Requisito 1.4 - O registro de CRM deverá obedecer ao padrão de formação que é, [numero]-[UF] onde:
+		- [numero] é um valor numérico inteiro de até 7 posições
+		- [UF] campo de duas letras que representam o estado onde foi registrado
+		
+                Exemplo: 1234567-RJ para um registro de número 1234567 realizado no Conselho Regional de Medicina do Estado do Rio de Janeiro
+
+Critérios de aceite: Médico com CRM fora da especificação recusado pelo sistema
+
+Requisito 1.5 - O sistema não poder cadastrar CRM duplicado 
+Critérios de aceite: Novo Médico com CRM já cadastrado, recusado pelo sistema
+
+Observação:
+As informações publicas dos médicos, que incluem o CRM e Nome, podem ser verificada junto ao Conselho Federal de Medicina que disponibiliza o serviço através de um WebService.
+
+Para maiores detalhes, vide link abaixo:
+https://sistemas.cfm.org.br/listamedicos/informacoes
+
+* Esta aplicação não possui integração com o WebService mencionado!
+
+# Cadastro de Pacientes
+
+Requisito 2.1 - O sistema deve permitir o cadastro dos pacientes que receberam ou receberão atendimento.
+Critérios de aceite: Paciente com informações válidas cadastrado no sistema
+
+Requisito 2.1 - Identificador, Nome do Paciente e Data de Nascimento são obrigatórios
+Critérios de aceite: Paciente sem alguma destas informações será recusado pelo
+
+Requisito 2.2 - Identificador, Nome do Paciente e Data de Nascimento são obrigatórios
+Critérios de aceite: Paciente sem alguma destas informações será recusado pelo
+
+Requisito 2.3 - O sistema não poder cadastrar Identificador de paciente duplicado 
+Critérios de aceite: Novo Paciente com Identificador já cadastrado, recusado pelo sistema
+
+Requisito 2.4 - Aceitar pacientes com idade entre 0 (recém nascido) e 110 anos
+Critérios de aceite: Novo Paciente com idade fora da faixa, recusado pelo sistema
+
+# Cadastro de Atendimentos Médicos Realizado
+
+Requisito 3.1 - O sistema devera permitir o cadastro somente se o Médico, identificado pelo CRM, já estiver cadastrado como Médico.
+Critérios de aceite: Registro do atendimento recusado pelo sistema
+
+Requisito 3.2 - O sistema devera permitir o cadastro somente se o Paciente, identificado pelo campo Identificador, já estiver cadastrado como Paciente.
+Critérios de aceite: Registro do atendimento recusado pelo sistema
+
+Requisito 3.3 - O sistema devera permitir o cadastro somente com data de atendimento sendo do dia corrente ou anterior.
+Critérios de aceite: Registro do atendimento com data futura recusado pelo sistema
+
+
 ## Integrantes do Grupo de Trabalho (Grupo 36)
 - Ricardo Moreira RM351064 
