@@ -5,6 +5,7 @@ using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Interfaces.Controller;
 using PosTech.Consultorio.Interfaces.Gateways;
 using PosTech.Consultorio.UseCases.AtendimentoMedico;
+using PosTech.Consultorio.UseCases.Medico;
 
 namespace PosTech.Consultorio.Controllers
 {
@@ -23,6 +24,9 @@ namespace PosTech.Consultorio.Controllers
 
         public string AtualizarAtendimento(AtendimentoMedicoDAO atendimento)
         {
+            var verificarCRM = new VerificarRegistroCRMUseCase(atendimento.Medico.CRM);
+            verificarCRM.Verificar();
+
             var medico = _medicoGateway.ObterPorIdentificacao(atendimento.Medico.CRM);
             var paciente = _pacienteGateway.ObterPorIdentificacao(atendimento.Paciente.Identificacao);
 
@@ -38,6 +42,9 @@ namespace PosTech.Consultorio.Controllers
 
         public string IncluirAtendimento(AtendimentoMedicoDAO atendimento)
         {
+            var verificarCRM = new VerificarRegistroCRMUseCase(atendimento.Medico.CRM);
+            verificarCRM.Verificar();
+
             var medico = _medicoGateway.ObterPorIdentificacao(atendimento.Medico.CRM);
             var paciente = _pacienteGateway.ObterPorIdentificacao(atendimento.Paciente.Identificacao);
 

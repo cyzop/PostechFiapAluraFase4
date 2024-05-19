@@ -1,14 +1,18 @@
 ﻿using Bogus;
-using Microsoft.Extensions.Primitives;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
-using PosTech.Consultorio.UseCases.Medico;
 
 namespace PosTech.Consultorio.Tests.Fixtures
 {
     public class AtendimentoTestFixture
     {
         private readonly Faker _faker;
+        private string[] ESTADOS_SIGLA = new string[] { "RO", "AC", "AM", "RR", "PA", "AP", "TO", "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA", "MG", "ES", "RJ", "SP", "PR", "SC", "RS", "MS", "MT", "GO", "DF" };
+
+        public string RandomSigla()
+        {
+            return ESTADOS_SIGLA[_faker.Random.Number(ESTADOS_SIGLA.Length - 1)];
+        }
         private DateTime DataAtendimentoValida { 
             get { return DateTime.Now.AddDays(-1); } 
         }
@@ -31,7 +35,7 @@ namespace PosTech.Consultorio.Tests.Fixtures
 
             var nomeMedico = _faker.Name.FullName();
             var nomePaciente = _faker.Name.FullName();
-            var crmMedico = $"{_faker.Random.Number(999999)}-{_faker.Random.String2(2)}";
+            var crmMedico = $"{_faker.Random.Number(999999)}-{RandomSigla()}";
             var idPaciente = _faker.Random.Number(999999).ToString();
 
             return GeraAtendimentoMedicoEntity(DataAtendimentoValida,
@@ -53,7 +57,7 @@ namespace PosTech.Consultorio.Tests.Fixtures
 
             var nomeMedico = _faker.Name.FullName();
             var nomePaciente = _faker.Name.FullName();
-            var crmMedico = $"{_faker.Random.Number(999999)}-{_faker.Random.String2(2)}";
+            var crmMedico = $"{_faker.Random.Number(999999)}-{RandomSigla()}";
             var idPaciente = _faker.Random.Number(999999).ToString();
 
             return GeraAtendimentoMedicoEntity(DataAtendimentoInValida,
@@ -69,7 +73,7 @@ namespace PosTech.Consultorio.Tests.Fixtures
         public IdentificadorMedicoEntity GerarIdentificadorMedico()
         {
             var nomeMedico = _faker.Name.FullName();
-            var crm = $"{_faker.Random.Number(999999)}-{_faker.Random.String2(2)}";
+            var crm = $"{_faker.Random.Number(999999)}-{RandomSigla()}";
             return GerarIdentificadorMedico(nomeMedico, crm);
         }
         
@@ -78,7 +82,7 @@ namespace PosTech.Consultorio.Tests.Fixtures
             return new IdentificadorMedicoDAO
             {
                 Nome = _faker.Name.FullName(),
-                CRM = $"{_faker.Random.Number(999999)}-{_faker.Random.String2(2)}"
+                CRM = $"{_faker.Random.Number(999999)}-{RandomSigla()}"
             };
         }
         public IdentificadorPacienteDAO GerarIdentificadorPacienteDao()
@@ -98,7 +102,7 @@ namespace PosTech.Consultorio.Tests.Fixtures
             var tratamento = _faker.Lorem.Random.String2(100);
 
             var nomePaciente = _faker.Name.FullName();
-            var crm = $"{_faker.Random.Number(999999)}-{_faker.Random.String2(2)}";
+            var crm = $"{_faker.Random.Number(999999)}-{RandomSigla()}";
 
             return GerarAtendimentoMedicoDao(DataAtendimentoValida,
                 anamnese,

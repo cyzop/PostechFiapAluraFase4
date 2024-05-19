@@ -19,6 +19,9 @@ namespace PosTech.Consultorio.Controllers
 
         public string AtualizarMedico(MedicoDAO medico)
         {
+            var verificarCRM = new VerificarRegistroCRMUseCase(medico.CRM);
+            verificarCRM.Verificar();
+
             var medicoBase = _medicoGateway.ObterPorIdentificacao(medico.CRM);
           
             var medicoeEntity = MedicoEntityAdapter.FromDAO(medico);
@@ -54,6 +57,9 @@ namespace PosTech.Consultorio.Controllers
 
         public string RegistrarMedico(MedicoDAO medico)
         {
+            var verificarCRM = new VerificarRegistroCRMUseCase(medico.CRM);
+            verificarCRM.Verificar();
+
             var registroBase = _medicoGateway.ObterPorIdentificacao(medico.CRM);
 
             var medicoEntity = new 

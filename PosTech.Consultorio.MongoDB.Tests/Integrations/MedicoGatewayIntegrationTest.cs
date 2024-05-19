@@ -39,7 +39,7 @@ namespace PosTech.Consultorio.MongoDB.Tests.Integrations
         public void Create_Should_Return_SameCreated()
         {
             //Arrange
-            var crm = $"{_faker.Random.Number(999999)}-{_faker.Random.String2(2)}";
+            var crm = $"{_faker.Random.Number(999999)}-RJ";
             var especialid = _faker.Person.Email;
             var nome = _faker.Name.FullName();
 
