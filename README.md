@@ -95,9 +95,9 @@ Exemplo:
 - Iniciar o projeto com Depuração apertando o F5, para executar o projeto utilizando o Swagger
 
 
-## Requisitos do Software
+# Requisitos do Software
 
-# Cadastro de Médicos
+## Cadastro de Médicos
 
 Requisito 1.1 - O sistema deve permitir o cadastro dos médicos que serão utilizado para registrar os atendimentos médicos
 Critérios de aceite: Médico com informações válidas cadastrado no sistema
@@ -122,12 +122,11 @@ Critérios de aceite: Novo Médico com CRM já cadastrado, recusado pelo sistema
 Observação:
 As informações publicas dos médicos, que incluem o CRM e Nome, podem ser verificada junto ao Conselho Federal de Medicina que disponibiliza o serviço através de um WebService.
 
-Para maiores detalhes, vide link abaixo:
-https://sistemas.cfm.org.br/listamedicos/informacoes
+Maiores detalhes sobre este tema ou detalhes deste WebService podem ser encontradas [aqui](https://sistemas.cfm.org.br/listamedicos/informacoes)
 
 * Esta aplicação não possui integração com o WebService mencionado!
 
-# Cadastro de Pacientes
+## Cadastro de Pacientes
 
 Requisito 2.1 - O sistema deve permitir o cadastro dos pacientes que receberam ou receberão atendimento.
 Critérios de aceite: Paciente com informações válidas cadastrado no sistema
@@ -144,7 +143,7 @@ Critérios de aceite: Novo Paciente com Identificador já cadastrado, recusado p
 Requisito 2.4 - Aceitar pacientes com idade entre 0 (recém nascido) e 110 anos
 Critérios de aceite: Novo Paciente com idade fora da faixa, recusado pelo sistema
 
-# Cadastro de Atendimentos Médicos Realizado
+## Cadastro de Atendimentos Médicos Realizado
 
 Requisito 3.1 - O sistema devera permitir o cadastro somente se o Médico, identificado pelo CRM, já estiver cadastrado como Médico.
 Critérios de aceite: Registro do atendimento recusado pelo sistema
