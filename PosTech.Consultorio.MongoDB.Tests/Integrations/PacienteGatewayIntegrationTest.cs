@@ -1,9 +1,7 @@
 ﻿using Bogus;
-using MongoDB.Driver;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Gateways;
 using PosTech.Consultorio.Interfaces.Gateways;
-using PosTech.Consultorio.Interfaces.Repositories;
 using PosTech.Consultorio.MongoDB.Tests.MongoDB;
 using PosTech.Consultorio.Resource.NoSql.Model;
 using PosTech.Consultorio.Resource.NoSql.Repositories;
