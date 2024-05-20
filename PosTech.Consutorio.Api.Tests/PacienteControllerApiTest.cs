@@ -28,8 +28,8 @@ namespace PosTech.Consutorio.Api.Tests
             _pacienteController = new Mock<IPacienteController>();
         }
 
-        [Fact(DisplayName = "Validando retorno de pacientes da api")]
-        [Trait("ApipacienteController", "Validando retorno de pacientes da api")]
+        [Fact(DisplayName = "Teste unitário de validação de listagem de pacientes da api")]
+        [Trait("ApipacienteController", "Teste unitário de validação de listagem de pacientes da api")]
         public async void Get_ReturnsOkResultWithData()
         {
             //Arrange

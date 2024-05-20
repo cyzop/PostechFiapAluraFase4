@@ -30,8 +30,8 @@ namespace PosTech.Consutorio.Api.Tests
             _atendimentoController = new Mock<IAtendimentoController>();
         }
 
-        [Fact(DisplayName = "Validando retorno de atendimentos de um médico")]
-        [Trait("ApiAtendimentoMedicoController", "Validando retorno de atendimentos de um médico")]
+        [Fact(DisplayName = "Teste unitário de validação de retorno dos atendimentos de um médico")]
+        [Trait("ApiAtendimentoMedicoController", "Teste unitário de validação de retorno dos atendimentos de um médico")]
         public async void Get_ReturnsOkResultWithDataFromMedicalDoctor()
         {
             //Arrange
@@ -69,8 +69,8 @@ namespace PosTech.Consutorio.Api.Tests
             Assert.Equal(atendimentosDao, okResult.Value);
         }
 
-        [Fact(DisplayName = "Validando retorno de atendimentos de um paciente")]
-        [Trait("ApiAtendimentoMedicoController", "Validando retorno de atendimentos de um paciente")]
+        [Fact(DisplayName = "Teste unitário de validação de retorno de atendimentos de um paciente")]
+        [Trait("ApiAtendimentoMedicoController", "Teste unitário de validação de retorno de atendimentos de um paciente")]
         public async void Get_ReturnsOkResultWithDataFromPatient()
         {
             //Arrange
@@ -108,8 +108,8 @@ namespace PosTech.Consutorio.Api.Tests
             Assert.Equal(atendimentosDao, okResult.Value);
         }
 
-        [Fact(DisplayName = "Validando registro de atendimento médico")]
-        [Trait("ApiAtendimentoMedicoController", "Validando registro de atendimento médico ")]
+        [Fact(DisplayName = "Teste unitário de validação de registro de atendimento médico")]
+        [Trait("ApiAtendimentoMedicoController", "Teste unitário de validação de registro de atendimento médico ")]
         public async void Get_ReturnsOkResultWithJsonWhenInclude()
         {
             //Arrange
@@ -136,8 +136,8 @@ namespace PosTech.Consutorio.Api.Tests
             Assert.Equal(jsonAtendimento, okResult.Value);
         }
 
-        [Fact(DisplayName = "Validando alteração de atendimento médico")]
-        [Trait("ApiAtendimentoMedicoController", "Validando alteração de atendimento médico ")]
+        [Fact(DisplayName = "Teste unitário de validação de alteração de atendimento médico")]
+        [Trait("ApiAtendimentoMedicoController", "Teste unitário de validação de alteração de atendimento médico ")]
         public async void Get_ReturnsOkResultWithJsonWhenUpdate()
         {
             //Arrange

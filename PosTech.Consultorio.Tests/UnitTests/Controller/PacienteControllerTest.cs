@@ -16,8 +16,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Controller
             _pacienteFixture = pacienteFixture;
         }
 
-        [Fact(DisplayName = "Validando criação de novo paciente")]
-        [Trait("PacienteController", "Validando Registrar novo paciente")]
+        [Fact(DisplayName = "Teste unitário de validação do controler de criação de novo paciente")]
+        [Trait("PacienteController", "Teste unitário de validação do controler de criação novo paciente")]
         public void Create_ShouldReturnJson()
         {
             //Arrange
@@ -37,8 +37,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Controller
             Assert.Equal(jsonRetorno, json);
         }
 
-        [Fact(DisplayName = "Validando alteração de paciente")]
-        [Trait("PacienteController", "Validando alteração de paciente")]
+        [Fact(DisplayName = "Teste unitário de validação do controler de alteração de paciente")]
+        [Trait("PacienteController", "Teste unitário de validação do controler de alteração de paciente")]
         public void Update_ShouldReturnJson()
         {
             //Arrange

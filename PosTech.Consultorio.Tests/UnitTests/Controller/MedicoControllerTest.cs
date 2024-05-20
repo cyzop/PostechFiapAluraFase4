@@ -15,8 +15,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Controller
             _medicoFixture = medicoFixture;
         }
 
-        [Fact(DisplayName = "Validando criação de novo médico")]
-        [Trait("MedicoController", "Validando Registrar novo Medico")]
+        [Fact(DisplayName = "Teste unitário de validação do controler de criação de novo médico")]
+        [Trait("MedicoController", "Teste unitário de validação do controler de criação novo Medico")]
         public void Create_ShouldReturnJson()
         {
             //Arrange
@@ -36,8 +36,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Controller
             Assert.Equal(jsonRetorno, json);
         }
 
-        [Fact(DisplayName = "Validando alteração de médico já cadastrado")]
-        [Trait("MedicoController", "Validando Atualizar Medico")]
+        [Fact(DisplayName = "Teste unitário de validação do controler de alteração de médico já cadastrado")]
+        [Trait("MedicoController", "Teste unitário de validação do controler de alteração de Medico")]
         public void Update_ShouldReturnJson()
         {
             //Arrange
@@ -58,8 +58,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Controller
         }
 
 
-        [Fact(DisplayName = "Validando listagem de méticos já cadastrados")]
-        [Trait("MedicoController", "Validando Listar Medicos")]
+        [Fact(DisplayName = "Teste unitário de validação do controler de listagem de méticos já cadastrados")]
+        [Trait("MedicoController", "Teste unitário de validação do controler de Listar Medicos")]
         public void List_ShouldReturnListOfMedidoDao()
         {
             //Arrange

@@ -13,8 +13,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             _medicoFixture = medicoFixture;
         }
 
-        [Fact(DisplayName = "Validando entidade médico")]
-        [Trait("MedicoEntity", "Validando entidade Médico")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade médico")]
+        [Trait("MedicoEntity", "Teste unitário de validação da entidade Médico")]
         public void ValidateEntity_Should_New_MedicalDoctorEntity()
         {
             //Arrange
@@ -28,8 +28,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
         }
 
 
-        [Fact(DisplayName = "Validando entidade médico com nome vazio")]
-        [Trait("MedicoEntity", "Validando entidade Médico com nome vazio")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade médico com nome vazio")]
+        [Trait("MedicoEntity", "Teste unitário de validação da entidade Médico com nome vazio")]
         public void ValidateEntity_ShouldThrowException_WhenNameisEmpty()
         {
             //Arrange
@@ -41,8 +41,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal("O Nome do médico não pode estar vazio!", result.Message);
         }
 
-        [Fact(DisplayName = "Validando entidade médico com UF do CRM inválida")]
-        [Trait("MedicoEntity", "Validando entidade Médico com UF do CRM inválida")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade médico com UF do CRM inválida")]
+        [Trait("MedicoEntity", "Teste unitário de validação da entidade Médico com UF do CRM inválida")]
         public void ValidateEntity_ShouldThrowException_WhenCRMisInvalid()
         {
             //Arrange
@@ -54,8 +54,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal("A UF do CRM está inválida, ela deve ter apenas 2 caracteres!", result.Message);
         }
 
-        [Fact(DisplayName = "Validando entidade médico com idade superior a 70 anos")]
-        [Trait("MedicoEntity", "Validando entidade Médico com idade inválida, acima dos 70 anos")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade médico com idade superior a 70 anos")]
+        [Trait("MedicoEntity", "Teste unitário de validação da entidade Médico com idade inválida, acima dos 70 anos")]
         public void ValidateEntity_ShouldThrowException_WhenAgeIsGreaterThanMaxValue()
         {
             //Arrange
@@ -67,8 +67,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal("Data de nascimento do médico inválida, ele não pode ter mais de 70 anos!", result.Message);
         }
 
-        [Fact(DisplayName = "Validando entidade médico com idade inferior a 21 anos")]
-        [Trait("MedicoEntity", "Validando entidade Médico com idade inválida, abaixo dos 21 anos")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade médico com idade inferior a 21 anos")]
+        [Trait("MedicoEntity", "Teste unitário de validação da entidade Médico com idade inválida, abaixo dos 21 anos")]
         public void ValidateEntity_ShouldThrowException_WhenAgeIsLowerThanMinValue()
         {
             //Arrange

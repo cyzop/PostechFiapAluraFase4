@@ -12,8 +12,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             _pacienteFixture = pacienteFixture;
         }
 
-        [Fact(DisplayName = "Validando entidade paciente")]
-        [Trait("PacienteEntity", "Validando entidade paciente")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade paciente")]
+        [Trait("PacienteEntity", "Teste unitário de validação da entidade paciente")]
         public void ValidateEntity_Should_Return_Sucess()
         {
             //Arrange
@@ -26,8 +26,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal(true, act);
         }
 
-        [Fact(DisplayName = "Validando entidade paciente com nome vazio")]
-        [Trait("PacienteEntity", "Validando entidade paciente com nome vazio")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade paciente com nome vazio")]
+        [Trait("PacienteEntity", "Teste unitário de validação da entidade paciente com nome vazio")]
         public void ValidateEntity_ShouldThrowException_WhenNameIsEmpty()
         {
             //Arrange
@@ -39,8 +39,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal("O Nome do paciente não pode estar vazio!", result.Message);
         }
 
-        [Fact(DisplayName = "Validando entidade paciente com nome Identificador vazio")]
-        [Trait("PacienteEntity", "Validando entidade paciente com Identificador vazio")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade paciente com Identificador vazio")]
+        [Trait("PacienteEntity", "Teste unitário de validação da entidade paciente com Identificador vazio")]
         public void ValidateEntity_ShouldThrowException_WhenIdentifierIsEmpty()
         {
             //Arrange
@@ -52,8 +52,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal("A Identificação do paciente não pode estar vazia!", result.Message);
         }
 
-        [Fact(DisplayName = "Validando entidade paciente com idade superior a 110 anos")]
-        [Trait("PacienteEntity", "Validando entidade paciente com idade inválida, acima dos 110 anos")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade paciente com idade superior a 110 anos")]
+        [Trait("PacienteEntity", "Teste unitário de validação da entidade paciente com idade inválida, acima dos 110 anos")]
         public void ValidateEntity_ShouldThrowException_WhenAgeIsGreaterThanMaxValue()
         {
             //Arrange
@@ -65,8 +65,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
             Assert.Equal("Data de nascimento do paciente inválida, ele não pode ter mais de 110 anos!", result.Message);
         }
 
-        [Fact(DisplayName = "Validando entidade paciente com idade inferior a 0 anos")]
-        [Trait("PacienteEntity", "Validando entidade paciente com idade inválida, data de nascimento futura")]
+        [Fact(DisplayName = "Teste unitário de validação da entidade paciente com idade inferior a 0 anos")]
+        [Trait("PacienteEntity", "Teste unitário de validação da entidade paciente com idade inválida, data de nascimento futura")]
         public void ValidateEntity_ShouldThrowException_WhenAgeIsLowerThanMinValue()
         {
             //Arrange

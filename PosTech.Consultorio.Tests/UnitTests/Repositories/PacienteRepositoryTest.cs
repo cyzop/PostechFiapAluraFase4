@@ -25,8 +25,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Repositories
 
         }
 
-        [Fact(DisplayName = "Validando busca de paciente por Identificador")]
-        [Trait("PacienteModel", "Validando busca de paciente por Identificador")]
+        [Fact(DisplayName = "Teste unitário de busca paciente por Identificador no repositório de Pacientes")]
+        [Trait("PacienteModel", "Teste unitário de busca de paciente por Identificador no repositório de Pacientes")]
         public void ValidateGetById_Should_Return_Entity()
         {
 

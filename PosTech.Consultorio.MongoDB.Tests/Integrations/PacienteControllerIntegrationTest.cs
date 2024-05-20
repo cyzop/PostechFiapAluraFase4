@@ -39,8 +39,8 @@ namespace PosTech.Consultorio.MongoDB.Tests.Integrations
 
         ~PacienteControllerIntegrationTest() => base.TestCleanup();
 
-        [Fact(DisplayName = "Validando inclusão de medico com CRM duplicado")]
-        [Trait("PacienteDao", "Validando inclusão de novo medico CRM duplicado")]
+        [Fact(DisplayName = "Validando inclusão de paciente com Identificacao já existente")]
+        [Trait("PacienteDao", "Validando inclusão de paciente com Identificacao já existente")]
         public void Create_ShouldThrowException_WhenIdentificationIsDuplicated()
         {
             //Arrange

@@ -28,8 +28,8 @@ namespace PosTech.Consultorio.Tests.IntegrationTests.Api.Controller
             _medicoController = new Mock<IMedicoController>();            
         }
 
-        [Fact(DisplayName = "Validando retorno de medicos da api")]
-        [Trait("ApiMedicoController", "Validando retorno de medicos da api")]
+        [Fact(DisplayName = "Teste unitário de validação de listagem de medicos da api")]
+        [Trait("ApiMedicoController", "Teste unitário de validação de listagem de medicos da api")]
         public async void Get_ReturnsOkResultWithData()
         {
             //Arrange

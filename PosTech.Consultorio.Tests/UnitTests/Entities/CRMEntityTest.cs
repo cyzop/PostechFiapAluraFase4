@@ -4,8 +4,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Entities
 {
     public class CRMEntityTest
     {
-        [Fact(DisplayName = "Validando CRM")]
-        [Trait("MedicoEntity", "Validando CRM do Médico")]
+        [Fact(DisplayName = "Teste unitário de validação de formato do CRM")]
+        [Trait("MedicoEntity", "Teste unitário de validação de formato do CRM do Médico")]
         public void Should_Create_New_CRMEntity()
         {
             const string crmFake = "123456-RJ";
