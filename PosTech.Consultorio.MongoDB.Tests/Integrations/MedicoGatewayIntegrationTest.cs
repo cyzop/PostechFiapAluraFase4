@@ -35,15 +35,15 @@ namespace PosTech.Consultorio.MongoDB.Tests.Integrations
 
 
         [Fact(DisplayName = "Validando inclusão de medico no banco Mongo")]
-        [Trait("PacienteModel", "Validando inclusão de novo medico no banco de dados")]
+        [Trait("MedicoEntity", "Validando inclusão de novo medico no banco de dados")]
         public void Create_Should_Return_SameCreated()
         {
             //Arrange
             var crm = $"{_faker.Random.Number(999999)}-RJ";
-            var especialid = _faker.Person.Email;
+            var especialidade = "Neuro cirurgião";
             var nome = _faker.Name.FullName();
 
-            var medicoEntity = new MedicoEntity(nome, DateTime.Today.AddYears(-30), new CRMEntity(crm), DateTime.Today.AddYears(-10), "Neuro Cirurgião");
+            var medicoEntity = new MedicoEntity(nome, DateTime.Today.AddYears(-30), new CRMEntity(crm), DateTime.Today.AddYears(-10), especialidade);
 
             //Act
             _gateway.IncluirMedico(medicoEntity);
@@ -58,7 +58,7 @@ namespace PosTech.Consultorio.MongoDB.Tests.Integrations
         }
 
         [Fact(DisplayName = "Validando exclusão de medico no banco Mongo")]
-        [Trait("PacienteModel", "Validando exclusão de medico no banco de dados")]
+        [Trait("MedicoEntity", "Validando exclusão de medico no banco de dados")]
         public void Remote_Should_Return_Sucess()
         {
             //Arrange

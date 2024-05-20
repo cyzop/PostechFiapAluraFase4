@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PosTech.Consultorio.Controllers\PosTech.Consultorio.Controllers.csproj" />
     <ProjectReference Include="..\PosTech.Consultorio.Gateways\PosTech.Consultorio.Gateways.csproj" />
     <ProjectReference Include="..\PosTech.Consultorio.Resource.NoSql\PosTech.Consultorio.Resource.NoSql.csproj" />
   </ItemGroup>

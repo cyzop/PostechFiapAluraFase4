@@ -16,7 +16,7 @@ namespace PosTech.Consultorio.UseCases.Medico
         public MedicoEntity VerificarNovo()
         {
             if (_novo?.CRM.ToString() == _medico?.CRM.ToString())
-                throw new Exception($"Medico {_novo.Nome} já cadastrado!");
+                throw new Exception("Já existe um Medico cadastrado com mesmo CRM!");
 
             return _novo;
         }

@@ -16,7 +16,7 @@ namespace PosTech.Consultorio.UseCases.Paciente
         public PacienteEntity VerificarNovo()
         {
             if (_novoPaciente?.Identificacao == _paciente?.Identificacao)
-                throw new Exception($"Paciente {_novoPaciente.Nome} já cadastrado!");
+                throw new Exception("Já existe um paciente cadastrado com esta Identificacao!");
 
             return _novoPaciente;
         }

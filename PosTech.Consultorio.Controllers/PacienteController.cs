@@ -1,10 +1,8 @@
 ﻿using PosTech.Consultorio.Adapters.OutPut;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
-using PosTech.Consultorio.Gateways;
 using PosTech.Consultorio.Interfaces.Controller;
 using PosTech.Consultorio.Interfaces.Gateways;
-using PosTech.Consultorio.Interfaces.Repositories;
 using PosTech.Consultorio.UseCases.Paciente;
 
 namespace PosTech.Consultorio.Controllers
@@ -13,9 +11,9 @@ namespace PosTech.Consultorio.Controllers
     {
         private readonly IPacienteGateway pacienteGateway;
 
-        public PacienteController(IPatientRepository databaseClient)
+        public PacienteController(IPacienteGateway pacienteGateway)
         {
-            this.pacienteGateway = new PacienteGateway(databaseClient);
+            this.pacienteGateway = pacienteGateway;
         }
 
         public string RegistrarPaciente(PacienteDao pacienteDAO)

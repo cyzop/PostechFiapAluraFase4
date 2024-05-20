@@ -35,7 +35,7 @@ namespace PosTech.Consultorio.MongoDB.Tests.Integrations
 
 
         [Fact(DisplayName = "Validando inclusão de paciente no banco Mongo através do Gateway")]
-        [Trait("PacienteModel", "Validando inclusão de novo paciente no banco de dados através do Gateway")]
+        [Trait("PacienteEntity", "Validando inclusão de novo paciente no banco de dados através do Gateway")]
         public void Create_Should_Return_SameCreated()
         {
             //Arrange
@@ -58,7 +58,7 @@ namespace PosTech.Consultorio.MongoDB.Tests.Integrations
         }
 
         [Fact(DisplayName = "Validando exclusão de paciente no banco Mongo")]
-        [Trait("PacienteModel", "Validando exclusão de paciente no banco de dados")]
+        [Trait("PacienteEntity", "Validando exclusão de paciente no banco de dados")]
         public void Remote_Should_Return_Sucess()
         {
             //Arrange
