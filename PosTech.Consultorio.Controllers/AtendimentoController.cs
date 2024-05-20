@@ -1,6 +1,6 @@
 ﻿using PosTech.Consultorio.Adapters;
 using PosTech.Consultorio.Adapters.DAO;
-using PosTech.Consultorio.Adapters.Entity;
+using PosTech.Consultorio.Adapters.Input.Entity;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Interfaces.Controller;
 using PosTech.Consultorio.Interfaces.Gateways;

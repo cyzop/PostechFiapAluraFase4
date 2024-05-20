@@ -1,4 +1,4 @@
-﻿using PosTech.Consultorio.Adapters;
+﻿using PosTech.Consultorio.Adapters.OutPut;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
 using PosTech.Consultorio.Gateways;

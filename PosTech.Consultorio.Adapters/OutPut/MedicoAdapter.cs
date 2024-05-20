@@ -1,5 +1,4 @@
 ﻿using PosTech.Consultorio.Adapters.Data;
-using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
 
 namespace PosTech.Consultorio.Adapters

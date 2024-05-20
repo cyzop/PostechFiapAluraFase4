@@ -1,22 +1,22 @@
-﻿
-
-using PosTech.Consultorio.Adapters.Data;
+﻿using PosTech.Consultorio.Adapters.Data;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
 
-namespace PosTech.Consultorio.Adapters
+namespace PosTech.Consultorio.Adapters.OutPut
 {
     public class PacienteAdapter
     {
         public static string FromDaoToJson(PacienteDao paciente)
         {
-                var pacienteData = new PacienteAdapterData { Nome = paciente.Nome,
-                    Identificacao = paciente.Identificacao,
-                    DataNascimento = paciente.DataNascimento,
-                    Email = paciente.Email,
-                };
+            var pacienteData = new PacienteAdapterData
+            {
+                Nome = paciente.Nome,
+                Identificacao = paciente.Identificacao,
+                DataNascimento = paciente.DataNascimento,
+                Email = paciente.Email,
+            };
 
-            return System.Text.Json.JsonSerializer.Serialize<PacienteAdapterData>(pacienteData);
+            return System.Text.Json.JsonSerializer.Serialize(pacienteData);
         }
 
         public static string FromEntityToJson(PacienteEntity paciente)
@@ -29,7 +29,7 @@ namespace PosTech.Consultorio.Adapters
                 Email = paciente.Email,
             };
 
-            return System.Text.Json.JsonSerializer.Serialize<PacienteAdapterData>(pacienteData);
+            return System.Text.Json.JsonSerializer.Serialize(pacienteData);
         }
     }
 }

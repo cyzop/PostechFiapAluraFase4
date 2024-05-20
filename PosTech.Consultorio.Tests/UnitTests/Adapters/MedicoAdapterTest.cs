@@ -6,7 +6,8 @@ namespace PosTech.Consultorio.Tests.UnitTests.Adapters
 {
     public class MedicoAdapterTest
     {
-        [Fact]
+        [Fact(DisplayName = "Validando serialização de entidate para Json")]
+        [Trait("MedicoEntity", "Validando serialização de entidate para Json")]
         public void Should_Serialize_EntityToJson()
         {
             //Arrange

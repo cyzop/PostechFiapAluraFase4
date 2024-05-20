@@ -1,12 +1,7 @@
 ﻿using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PosTech.Consultorio.Adapters.Entity
+namespace PosTech.Consultorio.Adapters.Input.Entity
 {
     public class AtendimentoMedicoEntityAdapter
     {

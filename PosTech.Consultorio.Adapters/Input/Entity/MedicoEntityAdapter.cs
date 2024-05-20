@@ -1,7 +1,7 @@
 ﻿using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Entities;
 
-namespace PosTech.Consultorio.Adapters.Entity
+namespace PosTech.Consultorio.Adapters.Input.Entity
 {
     public class MedicoEntityAdapter
     {

@@ -1,5 +1,5 @@
 ﻿using Moq;
-using PosTech.Consultorio.Adapters;
+using PosTech.Consultorio.Adapters.OutPut;
 using PosTech.Consultorio.DAO;
 using PosTech.Consultorio.Interfaces.Controller;
 using PosTech.Consultorio.Tests.Fixtures;

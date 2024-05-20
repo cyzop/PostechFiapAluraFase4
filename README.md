@@ -13,7 +13,7 @@ A aplicação consiste em uma listagem de pacientes, representando os pacientes 
 
 Para registrar um atendimento médico é preciso que tanto o médico quanto o paciente sejam cadastrados.
 
-Mais informações sobre o projeto podem ser encontradas na documentação disponível [aqui](https://github.com/cyzop/blob/Master/PostechFiapAluraFase4/ConsultorioMedicoDoc.docx)
+Mais informações sobre o projeto, assim como os requisitos do software, podem ser encontradas na documentação disponível [aqui](https://github.com/cyzop/blob/Master/PostechFiapAluraFase4/ConsultorioMedicoDoc.pdf)
 
 Este repositório se refere ao back end da aplicação e caso desejado pode ser utilizado com o Swagger (disponível em modo Debug).
 
@@ -95,64 +95,26 @@ Exemplo:
 - Iniciar o projeto com Depuração apertando o F5, para executar o projeto utilizando o Swagger
 
 
-# Requisitos do Software
+# Testes
 
-## Cadastro de Médicos
+Por possuir uma abordagem mais moderna e facilitando nosso trabalho com a descoberta de testes sem a necessidade de classes especiais, adotamos o framework xUnit que é uma das mais populares para realização de testes em .NET
 
-Requisito 1.1 - O sistema deve permitir o cadastro dos médicos que serão utilizado para registrar os atendimentos médicos
-Critérios de aceite: Médico com informações válidas cadastrado no sistema
+## Testes Unitários
 
-Requisito 1.2 - Para cadastrar um médico as informações de CRM (Registro no Conselho Regional de Medicina), Nome, Data de Nascimento e Data de Registro (CRM) são obrigatórios
-Critérios de aceite: Médico com informações não preenchidas recusado pelo sistema
+Utilizamos o xUnit para realizar os testes unitários em nossas projetos, onde cada método é testado isoladamente para garantir que funcione como esperado, independente do restante do sistema.
 
-Requisito 1.3 - Um médico será considerado apto ao trabalho se tiver com idade entre 20 e 70 anos.
-Critérios de aceite: Médico com idade fora da faixa válida recusado pelo sistema
+Abrindo a solução do projeto pelo Visual Studio, os projetos de teste unitários estão dentro da pasta Tests, em:
+- PosTech.Consultorio.Tests
+- PosTech.Consultorio.Api.Tests
 
-Requisito 1.4 - O registro de CRM deverá obedecer ao padrão de formação que é, [numero]-[UF] onde:
-		- [numero] é um valor numérico inteiro de até 7 posições
-		- [UF] campo de duas letras que representam o estado onde foi registrado
-		
-                Exemplo: 1234567-RJ para um registro de número 1234567 realizado no Conselho Regional de Medicina do Estado do Rio de Janeiro
 
-Critérios de aceite: Médico com CRM fora da especificação recusado pelo sistema
+## Testes de Integração 
 
-Requisito 1.5 - O sistema não poder cadastrar CRM duplicado 
-Critérios de aceite: Novo Médico com CRM já cadastrado, recusado pelo sistema
+Para garantir a correta integração e que as diferentes partes do sistema funcionem corretamente é essencial que se utilize os testes de integração.
+Em nosso projeto, além dos testes unitários, também realizamos testes de integração com xUnit, desta forma é possível verificar se diferentes componentes do sistema funcionam corretamente juntos.
 
-Observação:
-As informações publicas dos médicos, que incluem o CRM e Nome, podem ser verificada junto ao Conselho Federal de Medicina que disponibiliza o serviço através de um WebService.
-
-Maiores detalhes sobre este tema ou detalhes deste WebService podem ser encontradas [aqui](https://sistemas.cfm.org.br/listamedicos/informacoes)
-
-* Esta aplicação não possui integração com o WebService mencionado!
-
-## Cadastro de Pacientes
-
-Requisito 2.1 - O sistema deve permitir o cadastro dos pacientes que receberam ou receberão atendimento.
-Critérios de aceite: Paciente com informações válidas cadastrado no sistema
-
-Requisito 2.1 - Identificador, Nome do Paciente e Data de Nascimento são obrigatórios
-Critérios de aceite: Paciente sem alguma destas informações será recusado pelo
-
-Requisito 2.2 - Identificador, Nome do Paciente e Data de Nascimento são obrigatórios
-Critérios de aceite: Paciente sem alguma destas informações será recusado pelo
-
-Requisito 2.3 - O sistema não poder cadastrar Identificador de paciente duplicado 
-Critérios de aceite: Novo Paciente com Identificador já cadastrado, recusado pelo sistema
-
-Requisito 2.4 - Aceitar pacientes com idade entre 0 (recém nascido) e 110 anos
-Critérios de aceite: Novo Paciente com idade fora da faixa, recusado pelo sistema
-
-## Cadastro de Atendimentos Médicos Realizado
-
-Requisito 3.1 - O sistema devera permitir o cadastro somente se o Médico, identificado pelo CRM, já estiver cadastrado como Médico.
-Critérios de aceite: Registro do atendimento recusado pelo sistema
-
-Requisito 3.2 - O sistema devera permitir o cadastro somente se o Paciente, identificado pelo campo Identificador, já estiver cadastrado como Paciente.
-Critérios de aceite: Registro do atendimento recusado pelo sistema
-
-Requisito 3.3 - O sistema devera permitir o cadastro somente com data de atendimento sendo do dia corrente ou anterior.
-Critérios de aceite: Registro do atendimento com data futura recusado pelo sistema
+Os testes de integração com o banco de dados estão no projeto:
+- PosTech.Consultorio.MongoDB.Tests
 
 
 ## Integrantes do Grupo de Trabalho (Grupo 36)
