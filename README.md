@@ -13,9 +13,11 @@ A aplicação consiste em uma listagem de pacientes, representando os pacientes 
 
 Para registrar um atendimento médico é preciso que tanto o médico quanto o paciente sejam cadastrados.
 
-Mais informações sobre o projeto, assim como os requisitos do software, podem ser encontradas no documento "ConsultorioMedicoDoc.pdf" na raiz do projeto ou por [aqui](https://github.com/cyzop/PostechFiapAluraFase4/blob/master/ConsultorioMedicoDoc.pdf)
-
 Este repositório se refere ao back end da aplicação e caso desejado pode ser utilizado com o Swagger (disponível em modo Debug).
+
+# Requisitos
+
+O documento com o levanto de requisitos do software e seus critérios de aceite podem ser encontradas no arquivo "ConsultorioMedicoDoc.pdf" na raiz do projeto ou por [aqui](https://github.com/cyzop/PostechFiapAluraFase4/blob/master/ConsultorioMedicoDoc.pdf)
 
 # 📋 Tecnologias utilizadas
 
