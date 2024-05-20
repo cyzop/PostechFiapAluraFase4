@@ -41,23 +41,31 @@ Estes diretórios e projetos estão organizados da seguinta maneira:
 
 📁API
  - PosTech.Consultorio.Api
+   
 📁Controller
  - PosTech.Consultorio.Controllers
+   
 📁Entity
  - PosTech.Consultorio.Enities
+   
 📁Gateway
  - PosTech.Consultorio.Gateways
+   
 📁Interface
  - PosTech.Consultorio.Interfaces
+   
 📁Presenter
  - PosTech.Consultorio.Adapters
  - PosTech.Consultorio.DAO
+   
 📁Resources
  - PosTech.Consultorio.Resource.NoSql
+   
 📁Tests
  - PosTech.Consultorio.MongoDB.Tests
  - PosTech.Consultorio.Tests
  - PosTech.Consultorio.Api.Tests
+   
 📁Tests
   - PosTech.Consultorio.UseCases
     
