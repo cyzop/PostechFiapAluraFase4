@@ -36,7 +36,7 @@ Este decisão facilita a evolução dos sistema para entrega em microserviços m
 Para garantir a correta integração e que as diferentes partes do sistema funcionem corretamente é essencial que se utilize os testes de integração.
 Em nosso projeto, além dos testes unitários, também realizamos testes de integração com xUnit, desta forma é possível verificar se diferentes componentes do sistema funcionam corretamente juntos.
 
-# Arquitetura do Projeto
+## Arquitetura do Projeto
 
 Para melhorar organização do código, adotamos o uso de diretórios e dentro de cada um os projetos pertinentes. 
 Estes diretórios e projetos estão organizados da seguinta maneira:
