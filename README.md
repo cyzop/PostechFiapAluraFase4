@@ -22,7 +22,45 @@ Este repositório se refere ao back end da aplicação e caso desejado pode ser 
 - Microsoft .Net Core 7
 - MongoDB
 - XUnit 
- 
+
+## Banco de Dados
+
+Em função do propósito da aplicação representar uma associação entre diferentes entidades, como Médicos, Pacientes e Atendimentos, poderia ser utilizado um banco de dados relacional, porém optamos por seguir uma abordagem mais desacoplada/flexível utilizando um banco de dados NoSql com repositórios distintos.
+
+Este decisão facilita a evolução dos sistema para entrega em microserviços mais atômicos, isolados e autocontidos. Também permite que seja aplicada camadas de segurança distintas entre os repositórios e a adoção de segurança adequada à cada um dele. Lembrando que os prontuários de atendimentos são representam dados sensíveis e devem estar bem protegidos.
+
+## Framework de Testes
+
+Para garantir a correta integração e que as diferentes partes do sistema funcionem corretamente é essencial que se utilize os testes de integração.
+Em nosso projeto, além dos testes unitários, também realizamos testes de integração com xUnit, desta forma é possível verificar se diferentes componentes do sistema funcionam corretamente juntos.
+
+# Arquitetura do Projeto
+
+Para melhorar organização do código, adotamos o uso de diretórios e dentro de cada um os projetos pertinentes. 
+Estes diretórios e projetos estão organizados da seguinta maneira:
+
+📁API
+ - PosTech.Consultorio.Api
+📁Controller
+ - PosTech.Consultorio.Controllers
+📁Entity
+ - PosTech.Consultorio.Enities
+📁Gateway
+ - PosTech.Consultorio.Gateways
+📁Interface
+ - PosTech.Consultorio.Interfaces
+📁Presenter
+ - PosTech.Consultorio.Adapters
+ - PosTech.Consultorio.DAO
+📁Resources
+ - PosTech.Consultorio.Resource.NoSql
+📁Tests
+ - PosTech.Consultorio.MongoDB.Tests
+ - PosTech.Consultorio.Tests
+ - PosTech.Consultorio.Api.Tests
+📁Tests
+  - PosTech.Consultorio.UseCases
+    
 # 🔧 Como executar o projeto (Back End)
 
 ## Baixando o código
